@@ -1,89 +1,163 @@
 {% extends 'base.html' %}
 
+{%block conteudo-esquerda%}
+<div class="home_page-esquerda">
+    <section class="botao" style="margin-top: 35px;">
+        <a class="botao-esquerda" href="#">+</a>
+        <div class="botao-direita">
+            <a href="#">Consulta</a>
+            <a href="#">Animal</a>
+            <a href="#">Responsável</a>
+            <a href="#">Plano</a>
+        </div>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Agenda</a>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Histórico</a>
+    </section>
+    <section>
+        <a class="links-principais-especial" href="#">Animais cadastrados</a>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Responsáveis cadastrados</a>
+    </section>
+    <section>
+        <a class="links-principais" href="#">Tipos de plano</a>
+    </section>
+</div>
+{%endblock%}
+
+
 {%block conteudo-direita%}
-<h1 class="mt-5">{{ cliente.animal }}, {{ cliente.raca }}</h1>
-<dl>
-    <dt>ID</dt>
-    <dd>{{ cliente.id }}</dd>
+<div class="nome_cadastro">
+    <p class="fa fa-dog"></p>
+    <h1>{{ cliente.animal }}</h1>
+    <div>
+        <h1 style="padding-left: 10px; color:black;">{{cliente.raca}}</h1>
+    </div>
+</div>
 
-    <dt>Dono</dt>
-    <dd>{{ cliente.dono }}</dd>
-
-    <dt>Nome do animal</dt>
-    <dd>{{ cliente.animal }}</dd>
-
-    <dt>Espécie</dt>
-    <dd>{{ cliente.especie }}</dd>
-
-    <dt>Raça</dt>
-    <dd>{{ cliente.raca }}</dd>
-
-    <dt>Peso</dt>
-    <dd>{{ cliente.peso }}</dd>
-
-    <dt>Idade</dt>
-    <dd>{{ cliente.idade }}</dd>
-
-    <dt>Telefone</dt>
-    <dd>{{ cliente.telefone }}</dd>
-
-    <dt>E-mail</dt>
-    <dd>{{ cliente.email }}</dd>
-
-    <dt>Data criação</dt>
-    <dd>{{ cliente.data_criacao|date:'d/m/Y' }}</dd>
-
-    <dt>Plano</dt>
-    <dd>{{ cliente.plano }}</dd>
-
-    {% if cliente.descricao %}
-    <dt>Descrição</dt>
-    <dd>{{ cliente.descricao }}</dd>
-    {% endif %}
-
+<div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Dados_cadastro_1')">Dados de cadastro</button>
+    <button class="tablinks" onclick="openCity(event, 'Dados_animal_1')">Dados do animal</button>
     {% if cliente.vacina_set.all or cliente.consulta_set.all or cliente.cirurgia_set.all%}
-    <h1 class="mt-5">Histórico</h1>
+    <button class="tablinks" onclick="openCity(event, 'historico_1')">Histórico</button>
+    {% endif %}
+</div>
+<div id="Dados_cadastro_1" class="tabcontent">
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Data de criação</p>
+        <p class="informacao2">{{  cliente.data_criacao|date:'d/m/Y' }}</p>
+    </div>
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Nome do responsável</p>
+        <p class="informacao2">{{ cliente.dono }}</p>
+    </div>
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Telefone</p>
+        <p class="informacao2">{{ cliente.telefone }}</p>
+    </div>
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Email</p>
+        <p class="informacao2">{{ cliente.email }}</p>
+    </div>
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Plano</p>
+        <p class="informacao2">{{ cliente.plano }}</p>
+    </div>
+</div>
 
+<div id="Dados_animal_1" class="tabcontent">
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Nome</p>
+        <p class="informacao2">{{  cliente.animal }}</p>
+    </div>
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Espécie</p>
+        <p class="informacao2">{{ cliente.especie }}</p>
+    </div>
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Raça</p>
+        <p class="informacao2">{{ cliente.raca }}</p>
+    </div>
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Sexo</p>
+        <p class="informacao2"> ADICIONAR </p>
+    </div>
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Peso</p>
+        <p class="informacao2"> {{ cliente.peso }} </p>
+    </div>
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Data de nascimento</p>
+        <p class="informacao2"> ADICIONAR </p>
+        <p class="informacao2">{{ cliente.idade }}</p>
+    </div>
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Tamanho/porte</p>
+        <p class="informacao2"> ADICIONAR </p>
+    </div>
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Pelagem</p>
+        <p class="informacao2"> ADICIONAR </p>
+    </div>
+    {% if cliente.descricao %}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Observações</p>
+        <p class="informacao2">{{ cliente.descricao }}</p>
+    </div>
+    {% endif %}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Número do microchip</p>
+        <p class="informacao2">ADICIONAR</p>
+    </div>
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Localização do microchip</p>
+        <p class="informacao2">ADICIONAR</p>
+    </div>
+
+</div>
+
+<div id="historico_1" class="tabcontent">
     {% if cliente.vacina_set.all%}
-    <dt>Vacinas</dt>
+        <div class="conteudo_cadastro_div">
+            <p class="informacao1">Vacinas</p>
+            {% for vacina in cliente.vacina_set.all %}
+            <div class="informacao3">
+                <a href="#">{{  vacina.data|date:'d/m/Y' }}</a>
+                <p>{{ vacina.vacina}}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
 
-    {% for vacina in cliente.vacina_set.all %}
-    <thead>
-        <tr>
-            <td>{{ vacina.vacina }}</td>
-            <td>{{ vacina.data }}<br></td>
-        </tr>
-    </thead>
-    {% endfor %}
-    {% endif %}
+        {% if cliente.consulta_set.all%}
+        <div class="conteudo_cadastro_div">
+            <p class="informacao1">Consultas</p>
+            {% for consulta in cliente.consulta_set.all %}
+            <div class="informacao3">
+                <a href="#">{{  consulta.data|date:'d/m/Y' }}</a>
+                <p>{{ consulta.consulta}}</p>
+            </div>
+            {% endfor %}
 
-    {% if cliente.consulta_set.all%}
-    <dt>Consultas</dt>
+        </div>
+        {% endif %}
 
-    {% for consulta in cliente.consulta_set.all %}
-    <thead>
-        <tr>
-            <td>{{ consulta.consulta }}</td>
-            <td>{{ consulta.data }}<br></td>
-        </tr>
-    </thead>
-    {% endfor %}
-    {% endif %}
+        {% if cliente.cirurgia_set.all%}
+        <div class="conteudo_cadastro_div">
+            <p class="informacao1">Cirurgias</p>
+            {% for cirurgia in cliente.cirurgia_set.all %}
+            <div class="informacao3">
+                <a href="#">{{  cirurgia.data|date:'d/m/Y' }}</a>
+                <p>{{ cirurgia.cirurgia}}</p>
+            </div>
+            {% endfor %}
 
-    {% if cliente.cirurgia_set.all%}
-    <dt>Cirurgias</dt>
+        </div>
+        {% endif %}
+</div>
 
-    {% for cirurgia in cliente.cirurgia_set.all %}
-    <thead>
-        <tr>
-            <td>{{ cirurgia.cirurgia }}</td>
-            <td>{{ cirurgia.data }}<br></td>
-        </tr>
-    </thead>
-    {% endfor %}
-    {% endif %}
-
-</dl>
-
-{% endif %}
 {%endblock%}
