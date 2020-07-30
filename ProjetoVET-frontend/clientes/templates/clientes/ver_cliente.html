@@ -2,7 +2,7 @@
 
 {%block conteudo-esquerda%}
 <div class="home_page-esquerda">
-    <section class="botao" style="margin-top: 35px;">
+    <section class="botao" style="padding-top: 35px;">
         <a class="botao-esquerda" href="#">+</a>
         <div class="botao-direita">
             <a href="#">Consulta</a>
@@ -27,6 +27,7 @@
         <a class="links-principais" href="#">Tipos de plano</a>
     </section>
 </div>
+
 {%endblock%}
 
 
@@ -122,42 +123,42 @@
 
 <div id="historico_1" class="tabcontent">
     {% if cliente.vacina_set.all%}
-        <div class="conteudo_cadastro_div">
-            <p class="informacao1">Vacinas</p>
-            {% for vacina in cliente.vacina_set.all %}
-            <div class="informacao3">
-                <a href="#">{{  vacina.data|date:'d/m/Y' }}</a>
-                <p>{{ vacina.vacina}}</p>
-            </div>
-            {% endfor %}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Vacinas</p>
+        {% for vacina in cliente.vacina_set.all %}
+        <div class="informacao3">
+            <a href="#">{{  vacina.data|date:'d/m/Y' }}</a>
+            <p>{{ vacina.vacina}}</p>
         </div>
-        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
 
-        {% if cliente.consulta_set.all%}
-        <div class="conteudo_cadastro_div">
-            <p class="informacao1">Consultas</p>
-            {% for consulta in cliente.consulta_set.all %}
-            <div class="informacao3">
-                <a href="#">{{  consulta.data|date:'d/m/Y' }}</a>
-                <p>{{ consulta.consulta}}</p>
-            </div>
-            {% endfor %}
-
+    {% if cliente.consulta_set.all%}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Consultas</p>
+        {% for consulta in cliente.consulta_set.all %}
+        <div class="informacao3">
+            <a href="#">{{  consulta.data|date:'d/m/Y' }}</a>
+            <p>{{ consulta.consulta}}</p>
         </div>
-        {% endif %}
+        {% endfor %}
 
-        {% if cliente.cirurgia_set.all%}
-        <div class="conteudo_cadastro_div">
-            <p class="informacao1">Cirurgias</p>
-            {% for cirurgia in cliente.cirurgia_set.all %}
-            <div class="informacao3">
-                <a href="#">{{  cirurgia.data|date:'d/m/Y' }}</a>
-                <p>{{ cirurgia.cirurgia}}</p>
-            </div>
-            {% endfor %}
+    </div>
+    {% endif %}
 
+    {% if cliente.cirurgia_set.all%}
+    <div class="conteudo_cadastro_div">
+        <p class="informacao1">Cirurgias</p>
+        {% for cirurgia in cliente.cirurgia_set.all %}
+        <div class="informacao3">
+            <a href="#">{{  cirurgia.data|date:'d/m/Y' }}</a>
+            <p>{{ cirurgia.cirurgia}}</p>
         </div>
-        {% endif %}
+        {% endfor %}
+
+    </div>
+    {% endif %}
 </div>
 
 {%endblock%}

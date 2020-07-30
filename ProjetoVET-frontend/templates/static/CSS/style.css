@@ -7,7 +7,9 @@ body {
 }
 
 footer {
-    margin-top: 70%;
+    /* height: 20%; */
+    /* position: fixed; */
+    align-content: space-between;
 }
 
 /* navbar */
@@ -18,7 +20,6 @@ footer {
     display: flex;
     /* justify-content: center; */
     align-items: center;
-
 }
 
 .navbar-esquerda {
@@ -71,6 +72,7 @@ footer {
     width: 20%;
     background-color: #E9ECF2;
     height: 100%;
+    position: fixed;
 }
 
 .conteudo-direita {
@@ -78,6 +80,8 @@ footer {
     background-color: white;
     height: 100%;
     margin: 10px;
+    left: 20%;
+    position: relative;
 }
 
 /* conteudo base */
@@ -86,6 +90,7 @@ footer {
 
 .home_page-esquerda {
     text-align: center;
+    /* position: fixed; */
 }
 
 .home_page-esquerda a {
@@ -298,6 +303,7 @@ footer {
     font-size: 16px;
     margin: 0;
     border-bottom: 1.5px #D4D4D4 solid;
+    /* font-weight: bold; */
 }
 
 .informacao2{
