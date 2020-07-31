@@ -18,8 +18,8 @@ footer {
     height: 60px;
     font-size: 25px;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
+    overflow: hidden;
 }
 
 .navbar-esquerda {
@@ -64,7 +64,7 @@ footer {
 /* conteudo base */
 .conteudo {
     display: inline-flex;
-    width: 100%;
+    width: 99%;
     height: 100%;
 }
 
