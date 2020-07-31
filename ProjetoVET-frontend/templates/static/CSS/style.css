@@ -241,6 +241,10 @@ footer {
 
 /* conteudo animais e donos cadastrados*/
 
+.hide {
+    display: none;
+}
+
 .nome_cadastro{
     display: flex;
     align-items: center;
