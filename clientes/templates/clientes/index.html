@@ -2,26 +2,26 @@
 
 {% block conteudo-esquerda %}
 <div class="home_page-esquerda">
-    <section class="botao" style="padding-top: 35px;">
+    <section class="botao" style="margin-top: 35px;">
         <a class="botao-esquerda" href="#">+</a>
         <div class="botao-direita">
             <a href="#">Consulta</a>
             <a href="#">Animal</a>
             <a href="#">Tutor</a>
             <a href="#">Plano</a>
-        </div>
+        </div> 
     </section>
     <section>
-        <a class="links-principais" href="#">Agenda</a>
+        <a class="links-principais" href="#">Administração</a>
     </section>
     <section>
-        <a class="links-principais" href="#">Histórico</a>
+        <a class="links-principais" href="{% url 'vacina' %}">Histórico de vacinas</a>
     </section>
     <section>
-        <a class="links-principais-especial" href="#">Animais cadastrados</a>
+        <a class="links-principais-especial" href="{% url 'index' %}">Animais cadastrados</a>
     </section>
     <section>
-        <a class="links-principais" href="#">Tutores cadastrados</a>
+        <a class="links-principais" href="{% url 'clientes' %}">Clientes cadastrados</a>
     </section>
     <section>
         <a class="links-principais" href="#">Tipos de plano</a>
@@ -36,27 +36,25 @@
         <p>Espécie</p>
         <p>Raça</p>
         <p>Tutor</p>
-        <p>Telefone</p>
         <p>Plano</p>
         <p>Última consulta</p>
     </section>
-    {% for cliente in clientes %}
-    {% if cliente.mostrar %}
+    {% for animal in animais %}
+    {% if animal.mostrar %}
     <section>
         <p>
-            <a href="{% url 'ver_cliente' cliente.id %}">{{cliente.animal}}</a>
+            <a href="{% url 'ver_animal' animal.id %}">{{animal.animal}}</a>
         </p>
         <p>
-            <a href="#">{{cliente.especie}}</a>
+            <a href="#">{{animal.especie}}</a>
         </p>
         <p>
-            <a href="#">{{cliente.raca}}</a>
+            <a href="#">{{animal.raca}}</a>
         </p>
         <p>
-            <a href="#">{{cliente.dono}}</a>
+            <a href="#">{{animal.tutor}}</a>
         </p>
-        <p>{{cliente.telefone}}</p>
-        <p> {{cliente.plano}} </p>
+        <p> {{animal.plano}} </p>
         <p>
             <a href="#"> DATA </a>
         </p>

@@ -12,16 +12,16 @@
         </div>
     </section>
     <section>
-        <a class="links-principais" href="#">Agenda</a>
+        <a class="links-principais" href="#">Administração</a>
     </section>
     <section>
-        <a class="links-principais" href="#">Histórico</a>
+        <a class="links-principais" href="{% url 'vacina' %}">Histórico de vacinas</a>
     </section>
     <section>
-        <a class="links-principais-especial" href="#">Animais cadastrados</a>
+        <a class="links-principais" href="{% url 'index' %}">Animais cadastrados</a>
     </section>
     <section>
-        <a class="links-principais" href="#">Tutores cadastrados</a>
+        <a class="links-principais-especial" href="{% url 'clientes' %}">Clientes cadastrados</a>
     </section>
     <section>
         <a class="links-principais" href="#">Tipos de plano</a>
@@ -33,132 +33,42 @@
 
 {%block conteudo-direita%}
 <div class="nome_cadastro">
-    <p class="fa fa-paw"></p>
-    <h1>{{ cliente.animal }}</h1>
-    <div>
-        <h1 style="padding-left: 10px; color:black;">{{cliente.raca}}</h1>
-    </div>
+    <h1>{{ cliente.tutor }}</h1>
 </div>
 
 <div class="tab">
     <button class="tablinks" onclick="openCity(event, 'Dados_cadastro_1')">Dados de cadastro</button>
-    <button class="tablinks" onclick="openCity(event, 'Dados_animal_1')">Dados do animal</button>
-    {% if cliente.vacina_set.all or cliente.consulta_set.all or cliente.cirurgia_set.all%}
-    <button class="tablinks" onclick="openCity(event, 'historico_1')">Histórico</button>
-    {% endif %}
+    <!-- <button class="tablinks" onclick="openCity(event, 'Dados_animal_1')">Dados dos animais</button> -->
 </div>
 <div id="Dados_cadastro_1" class="tabcontent">
     <div class="conteudo_cadastro_div">
         <p class="informacao1">Data de criação</p>
-        <p class="informacao2">{{  cliente.data_criacao|date:'d/m/Y' }}</p>
+        <p class="informacao2">{{  tutor.data_criacao_tutor|date:'d/m/Y' }}</p>
     </div>
     <div class="conteudo_cadastro_div">
         <p class="informacao1">Nome do tutor</p>
-        <p class="informacao2">{{ cliente.dono }}</p>
+        <p class="informacao2">{{ tutor.nome }}</p>
     </div>
     <div class="conteudo_cadastro_div">
         <p class="informacao1">Telefone</p>
-        <p class="informacao2">{{ cliente.telefone }}</p>
+        <p class="informacao2">{{ tutor.telefone }}</p>
     </div>
     <div class="conteudo_cadastro_div">
         <p class="informacao1">Email</p>
-        <p class="informacao2">{{ cliente.email }}</p>
-    </div>
-    <div class="conteudo_cadastro_div">
-        <p class="informacao1">Plano</p>
-        <p class="informacao2">{{ cliente.plano }}</p>
+        <p class="informacao2">{{ tutor.email }}
     </div>
 </div>
 
-<div id="Dados_animal_1" class="tabcontent">
+<!-- <div id="Dados_animal_1" class="tabcontent">
+    {% if tutor.animal_set.all%}
     <div class="conteudo_cadastro_div">
-        <p class="informacao1">Nome</p>
-        <p class="informacao2">{{  cliente.animal }}</p>
-    </div>
-    <div class="conteudo_cadastro_div">
-        <p class="informacao1">Espécie</p>
-        <p class="informacao2">{{ cliente.especie }}</p>
-    </div>
-    <div class="conteudo_cadastro_div">
-        <p class="informacao1">Raça</p>
-        <p class="informacao2">{{ cliente.raca }}</p>
-    </div>
-    <div class="conteudo_cadastro_div">
-        <p class="informacao1">Sexo</p>
-        <p class="informacao2"> ADICIONAR </p>
-    </div>
-    <div class="conteudo_cadastro_div">
-        <p class="informacao1">Peso</p>
-        <p class="informacao2"> {{ cliente.peso }} </p>
-    </div>
-    <div class="conteudo_cadastro_div">
-        <p class="informacao1">Data de nascimento</p>
-        <p class="informacao2"> ADICIONAR </p>
-        <p class="informacao2">{{ cliente.idade }}</p>
-    </div>
-    <div class="conteudo_cadastro_div">
-        <p class="informacao1">Tamanho/porte</p>
-        <p class="informacao2"> ADICIONAR </p>
-    </div>
-    <div class="conteudo_cadastro_div">
-        <p class="informacao1">Pelagem</p>
-        <p class="informacao2"> ADICIONAR </p>
-    </div>
-    {% if cliente.descricao %}
-    <div class="conteudo_cadastro_div">
-        <p class="informacao1">Observações</p>
-        <p class="informacao2">{{ cliente.descricao }}</p>
-    </div>
-    {% endif %}
-    <div class="conteudo_cadastro_div">
-        <p class="informacao1">Número do microchip</p>
-        <p class="informacao2">ADICIONAR</p>
-    </div>
-    <div class="conteudo_cadastro_div">
-        <p class="informacao1">Localização do microchip</p>
-        <p class="informacao2">ADICIONAR</p>
-    </div>
-
-</div>
-
-<div id="historico_1" class="tabcontent">
-    {% if cliente.vacina_set.all%}
-    <div class="conteudo_cadastro_div">
-        <p class="informacao1">Vacinas</p>
-        {% for vacina in cliente.vacina_set.all %}
+        <p class="informacao1">Animais</p>
+        {% for animal in tutor.animal_set.all %}
         <div class="informacao3">
-            <a href="#">{{  vacina.data|date:'d/m/Y' }}</a>
-            <p>{{ vacina.vacina}}</p>
+            <p>{{ animal.animal}}</p>
         </div>
         {% endfor %}
     </div>
-    {% endif %}
-
-    {% if cliente.consulta_set.all%}
-    <div class="conteudo_cadastro_div">
-        <p class="informacao1">Consultas</p>
-        {% for consulta in cliente.consulta_set.all %}
-        <div class="informacao3">
-            <a href="#">{{  consulta.data|date:'d/m/Y' }}</a>
-            <p>{{ consulta.consulta}}</p>
-        </div>
-        {% endfor %}
-
-    </div>
-    {% endif %}
-
-    {% if cliente.cirurgia_set.all%}
-    <div class="conteudo_cadastro_div">
-        <p class="informacao1">Cirurgias</p>
-        {% for cirurgia in cliente.cirurgia_set.all %}
-        <div class="informacao3">
-            <a href="#">{{  cirurgia.data|date:'d/m/Y' }}</a>
-            <p>{{ cirurgia.cirurgia}}</p>
-        </div>
-        {% endfor %}
-
-    </div>
-    {% endif %}
-</div>
+    {% endif %} -->
 
 {%endblock%}
