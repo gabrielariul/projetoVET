@@ -8,8 +8,10 @@ body {
 
 footer {
     /* height: 20%; */
-    /* position: fixed; */
-    align-content: space-between;
+    position: fixed;
+    bottom: 80px;
+    left: 0;
+    width: 20%;
 }
 
 /* navbar */
