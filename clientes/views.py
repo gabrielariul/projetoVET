@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Animal, Vacina, Tutor
+from .models import Animal, Vacina, Tutor, Consulta, Cirurgia
 
 
 def index(request):
@@ -36,4 +36,16 @@ def vacina(request):
     vacinas = Vacina.objects.all()
     return render(request, 'clientes/minhas_vacinas.html', {
         'vacinas': vacinas,
+    })
+
+def consulta(request):
+    consultas = Consulta.objects.all()
+    return render(request, 'clientes/minhas_consultas.html', {
+        'consultas': consultas,
+    })
+
+def cirurgia(request):
+    cirurgias = Cirurgia.objects.all()
+    return render(request, 'clientes/minhas_cirurgias.html', {
+        'cirurgias': cirurgias,
     })

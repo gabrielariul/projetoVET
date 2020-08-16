@@ -49,7 +49,7 @@ class Animal(models.Model):#animal
 
 class Vacina(models.Model):
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE, blank=True)
-    vacina = models.CharField(max_length=255, blank=True)
+    vacina = models.CharField(max_length=255, blank=True, default=' - ')
     data = models.DateField(default=timezone.now)
     descricao_da_vacina = models.TextField(verbose_name='Descrição da vacina', blank=True)
 
@@ -58,7 +58,7 @@ class Vacina(models.Model):
 
 class Consulta(models.Model):
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE, blank=True)
-    consulta = models.CharField(max_length=255, blank=True)
+    consulta = models.CharField(max_length=255, blank=True, default=' - ')
     data = models.DateField(default=timezone.now)
     descricao_da_consulta = models.TextField(verbose_name='Descrição da consulta', blank=True)
 
@@ -67,7 +67,7 @@ class Consulta(models.Model):
 
 class Cirurgia(models.Model):
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE, blank=True)
-    cirurgia = models.CharField(max_length=255, blank=True)
+    cirurgia = models.CharField(max_length=255, blank=True, default=' - ')
     data = models.DateField(default=timezone.now)
     descricao_da_cirurgia = models.TextField(verbose_name='Descrição da cirurgia', blank=True)
 

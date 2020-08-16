@@ -15,7 +15,13 @@
         <a class="links-principais" href="#">Administração</a>
     </section>
     <section>
-        <a class="links-principais-especial" href="#">Histórico de vacinas</a>
+        <a class="links-principais" href="{% url 'cirurgia' %}">Histórico de cirurgias</a>
+    </section>
+    <section>
+        <a class="links-principais" href="{% url 'consulta' %}">Histórico de consultas</a>
+    </section>
+    <section>
+        <a class="links-principais-especial" href="{% url 'vacina' %}">Histórico de vacinas</a>
     </section>
     <section>
         <a class="links-principais" href="{% url 'index' %}">Animais cadastrados</a>
