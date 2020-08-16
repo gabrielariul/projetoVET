@@ -38,7 +38,7 @@
 
 <div class="tab">
     <button class="tablinks" onclick="openCity(event, 'Dados_cadastro_1')">Dados de cadastro</button>
-    <!-- <button class="tablinks" onclick="openCity(event, 'Dados_animal_1')">Dados dos animais</button> -->
+    <button class="tablinks" onclick="openCity(event, 'Dados_animal_1')">Dados dos animais</button>
 </div>
 <div id="Dados_cadastro_1" class="tabcontent">
     <div class="conteudo_cadastro_div">
@@ -59,16 +59,28 @@
     </div>
 </div>
 
-<!-- <div id="Dados_animal_1" class="tabcontent">
-    {% if tutor.animal_set.all%}
-    <div class="conteudo_cadastro_div">
-        <p class="informacao1">Animais</p>
-        {% for animal in tutor.animal_set.all %}
-        <div class="informacao3">
-            <p>{{ animal.animal}}</p>
-        </div>
-        {% endfor %}
-    </div>
-    {% endif %} -->
+<div id="Dados_animal_1" class="tabcontent">
+    {% for animal in animais %}
+        {% if animal.tutor == tutor %}
+            <div class="conteudo_cadastro_div">
+
+                <p class="informacao1">Animal</p>
+                <div class="informacao2">
+                    <p>{{ animal.animal}}</p>
+                </div>
+
+                <p class="informacao1">Raça</p>
+                <div class="informacao2">
+                    <p>{{ animal.raca}}</p>
+                </div>
+
+                <p class="informacao1">Plano</p>
+                <div class="informacao2">
+                    <p>{{ animal.plano}}</p>
+                </div>
+
+            </div>
+        {% endif %}
+    {% endfor %}
 
 {%endblock%}

@@ -37,30 +37,31 @@
         <p>Raça</p>
         <p>Tutor</p>
         <p>Plano</p>
-        <p>Última consulta</p>
     </section>
     {% for animal in animais %}
-    {% if animal.mostrar %}
-    <section>
-        <p>
-            <a href="{% url 'ver_animal' animal.id %}">{{animal.animal}}</a>
-        </p>
-        <p>
-            <a href="#">{{animal.especie}}</a>
-        </p>
-        <p>
-            <a href="#">{{animal.raca}}</a>
-        </p>
-        <p>
-            <a href="#">{{animal.tutor}}</a>
-        </p>
-        <p> {{animal.plano}} </p>
-        <p>
-            <a href="#"> DATA </a>
-        </p>
-    </section>
-    {% endif %}
+        {% for cliente in clientes %}
+            {% if animal.tutor == cliente %}
+                {% if animal.mostrar %}
+                    <section>
+                        <p>
+                            <a href="{% url 'ver_animal' animal.id %}">{{animal.animal}}</a>
+                        </p>
+                        <p>
+                            <a href="{% url 'ver_animal' animal.id %}">{{animal.especie}}</a>
+                        </p>
+                        <p>
+                            <a href="{% url 'ver_animal' animal.id %}">{{animal.raca}}</a>
+                        </p>
+                        <p>
+                            <a href="{% url 'ver_cliente' cliente.id %}">{{cliente}}</a>
+                        </p>
+                        <p> {{animal.plano}} </p>
+                    </section>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
     {% endfor %}
+
 </div>
 
 {%endblock%}
