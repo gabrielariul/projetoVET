@@ -44,22 +44,26 @@
         <p>Tutor</p>
     </section>
 
-    {% for consulta in consultas %}
-    <section>
-        <p>
-            <a href="#">{{consulta.consulta}}</a>
-        </p>
-        <p>
-            <a href="#">{{consulta.animal}}</a>
-        </p>
-        <p>
-            <a href="#">{{consulta.data}}</a>
-        </p>
-        <p>
-            <a href="#">tutor</a>
-        </p>
-    </section>
+{% for consulta in consultas %}
+    {% for animal in animais %}
+        {% if animal == consulta.animal%}
+            <section>
+                <p>
+                    <a href="{% url 'ver_consulta' consulta.id %}">{{consulta.consulta}}</a>
+                </p>
+                <p>
+                    <a href="{% url 'ver_consulta' consulta.id %}">{{consulta.animal}}</a>
+                </p>
+                <p>
+                    <a href="{% url 'ver_consulta' consulta.id %}">{{consulta.data}}</a>
+                </p>
+                <p>
+                    <a href="{% url 'ver_consulta' consulta.id %}">{{animal.tutor}}</a>
+                </p>
+            </section>
+        {% endif%}
     {% endfor %}
+{% endfor %}
 </div>
 
 {%endblock%}

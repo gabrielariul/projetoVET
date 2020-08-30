@@ -44,22 +44,26 @@
         <p>Tutor</p>
     </section>
 
-    {% for cirurgia in cirurgias %}
-    <section>
-        <p>
-            <a href="#">{{cirurgia.cirurgia}}</a>
-        </p>
-        <p>
-            <a href="#">{{cirurgia.animal}}</a>
-        </p>
-        <p>
-            <a href="#">{{cirurgia.data}}</a>
-        </p>
-        <p>
-            <a href="#">tutor</a>
-        </p>
-    </section>
+{% for cirurgia in cirurgias %}
+    {% for animal in animais %}
+        {% if animal == cirurgia.animal%}
+            <section>
+                <p>
+                    <a href="{% url 'ver_cirurgia' cirurgia.id %}">{{cirurgia.cirurgia}}</a>
+                </p>
+                <p>
+                    <a href="{% url 'ver_cirurgia' cirurgia.id %}">{{cirurgia.animal}}</a>
+                </p>
+                <p>
+                    <a href="{% url 'ver_cirurgia' cirurgia.id %}">{{cirurgia.data}}</a>
+                </p>
+                <p>
+                    <a href="{% url 'ver_cirurgia' cirurgia.id %}">{{animal.tutor}}</a>
+                </p>
+            </section>
+        {% endif%}
     {% endfor %}
+{% endfor %}
 </div>
 
 {%endblock%}

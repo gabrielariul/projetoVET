@@ -34,18 +34,48 @@ def ver_cliente(request, tutor_id):
 
 def vacina(request):
     vacinas = Vacina.objects.all()
+    animais = Animal.objects.all()
     return render(request, 'clientes/minhas_vacinas.html', {
         'vacinas': vacinas,
+        'animais': animais,
     })
 
 def consulta(request):
     consultas = Consulta.objects.all()
+    animais = Animal.objects.all()    
     return render(request, 'clientes/minhas_consultas.html', {
         'consultas': consultas,
+        'animais': animais,
     })
 
 def cirurgia(request):
     cirurgias = Cirurgia.objects.all()
+    animais = Animal.objects.all()    
     return render(request, 'clientes/minhas_cirurgias.html', {
         'cirurgias': cirurgias,
+        'animais': animais,
+    })
+
+def ver_vacina(request, vacina_id):
+    vacina = get_object_or_404(Vacina, id=vacina_id)
+    animais = Animal.objects.all()
+    return render(request, 'clientes/ver_vacina.html', {
+        'animais': animais,
+        'vacina': vacina,
+    })
+
+def ver_consulta(request, consulta_id):
+    consulta = get_object_or_404(Consulta, id=consulta_id)
+    animais = Animal.objects.all()
+    return render(request, 'clientes/ver_consulta.html', {
+        'animais': animais,
+        'consulta': consulta,
+    })
+
+def ver_cirurgia(request, cirurgia_id):
+    cirurgia = get_object_or_404(Cirurgia, id=cirurgia_id)
+    animais = Animal.objects.all()
+    return render(request, 'clientes/ver_cirurgia.html', {
+        'animais': animais,
+        'cirurgia': cirurgia,
     })

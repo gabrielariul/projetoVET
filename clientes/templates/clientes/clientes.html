@@ -49,13 +49,13 @@
             <a href="{% url 'ver_cliente' cliente.id %}">{{cliente.nome}}</a>
         </p>
         <p>
-            <a href="#">{{cliente.telefone}}</a>
+            <a href="{% url 'ver_cliente' cliente.id %}">{{cliente.telefone}}</a>
         </p>
         <p>
-            <a href="#">{{cliente.email}}</a>
+            <a href="{% url 'ver_cliente' cliente.id %}">{{cliente.email}}</a>
         </p>
         <p>
-            <a href="#">{{cliente.data_criacao_tutor}}</a>
+            <a href="{% url 'ver_cliente' cliente.id %}">{{cliente.data_criacao_tutor}}</a>
         </p>
     </section>
     {% endfor %}

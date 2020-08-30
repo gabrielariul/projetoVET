@@ -44,22 +44,26 @@
         <p>Tutor</p>
     </section>
 
-    {% for vacina in vacinas %}
-    <section>
-        <p>
-            <a href="#">{{vacina.vacina}}</a>
-        </p>
-        <p>
-            <a href="#">{{vacina.animal}}</a>
-        </p>
-        <p>
-            <a href="#">{{vacina.data}}</a>
-        </p>
-        <p>
-            <a href="#">tutor</a>
-        </p>
-    </section>
+{% for vacina in vacinas %}
+    {% for animal in animais %}
+        {% if animal == vacina.animal%}
+            <section>
+                <p>
+                    <a href="{% url 'ver_vacina' vacina.id %}">{{vacina.vacina}}</a>
+                </p>
+                <p>
+                    <a href="{% url 'ver_vacina' vacina.id %}">{{vacina.animal}}</a>
+                </p>
+                <p>
+                    <a href="{% url 'ver_vacina' vacina.id %}">{{vacina.data}}</a>
+                </p>
+                <p>
+                    <a href="{% url 'ver_vacina' vacina.id %}">{{animal.tutor}}</a>
+                </p>
+            </section>
+        {% endif%}
     {% endfor %}
+{% endfor %}
 </div>
 
 {%endblock%}
